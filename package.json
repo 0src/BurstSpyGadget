@@ -1,0 +1,39 @@
+{
+  "name": "burstspygadget",
+  "version": "0.0.1",
+  "description": "Burst App to spy on the blcokchain",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ./app",
+    "dist": "electron-builder --dir",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "keywords": [
+    "burst",
+    "burstcoin",
+    "spy",
+    "blockchain"
+  ],
+  "author": "Zeus <burstnation.com>",
+  "dependencies": {
+    "axios": "^0.17.0",
+    "fs-path": "0.0.23",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.2.1",
+    "materialize-css": "^0.100.2"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.47",
+    "electron": "^1.7.9",
+    "electron-builder": "^19.43.0"
+  },
+  "build": {
+    "appId": "spy.burstnation.com",
+    "productName": "BURST SPY GADGET",
+    "win": {
+      "target": "portable",
+      "icon": "build/icon.ico",
+      "publisherName": "BurstNation.com"
+    }
+  }
+}

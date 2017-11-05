@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>BURST SPY GADGET</title>
+    <!--Import materialize.css-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+    <style>
+        #app {
+            display: none;
+            margin-bottom: 50px;
+        }
+        .fixed-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 0 10px;
+            z-index: 9999999;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            resize: vertical;
+        }
+
+        main, footer {
+            padding-left: 300px;
+        }
+
+        @media only screen and (max-width : 992px) {
+            header, main, footer {
+                padding-left: 0;
+            }
+        }
+
+        .logo {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 14px;
+            font-weight: bold;
+        }
+
+        #front-page-logo {
+            display: block;
+            margin: 0 auto;
+            height: 100px;
+            pointer-events: none;
+        }
+    </style>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body class="blue-grey lighten-5">
+<main style="margin-top: 20px;">
+    <div id="beforeApp" class="container">
+        <div class="row">
+            <div class="col s12 center-align" style="margin-top: 20%">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <div class="spinner-layer spinner-red">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <div class="spinner-layer spinner-yellow">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <div class="spinner-layer spinner-green">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="app" class="container">
+        <ul id="sidebar" class="js-sidebar side-nav fixed">
+            <li class="logo row">
+                <div class="col s12">
+                    <img id="front-page-logo" src="img/icon.png" alt="">
+                </div>
+                <div class="col s12">
+                    BURST SPY GADGET
+                </div>
+                <div class="col s12">
+                    <a href="#" class="js-add-wallet btn">Add Wallet</a>
+                </div>
+
+            </li>
+        </ul>
+        <div class="row">
+            <div class="col s12 hide-on-large-only">
+                <a href="#" class="btn right waves-effect waves-light button-collapse" data-activates="sidebar">
+                    <i class="material-icons left">menu</i>
+                    Wallets
+                </a>
+            </div>
+
+            <h5 class="col s12">
+                WALLET INFO
+            </h5>
+
+
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <input id="walletName" type="text" placeholder="Wallet Name">
+                    <label for="walletName">Wallet Name</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="walletAddress" type="text" placeholder="Wallet Address">
+                    <label for="walletAddress">Wallet Address</label>
+                </div>
+            </div>
+
+            <h5 class="col s12">
+                SPY OPTIONS
+            </h5>
+
+            <div class="js-spy-options row">
+                <!-- Send receive notifications -->
+                <div class="col s12 m6">
+                    <input type="checkbox" id="notifySend" class="filled-in" checked>
+                    <label for="notifySend">Notify if wallet send Burst</label>
+                </div>
+                <div class="col s12 m6">
+                    <input type="checkbox" id="notifyReceive" class="filled-in" checked>
+                    <label for="notifyReceive">Notify if wallet send Burst</label>
+                </div>
+
+                <!-- Assets notifications -->
+                <div class="col s12 m6">
+                    <input type="checkbox" id="notifyTransferAsset" class="filled-in" checked>
+                    <label for="notifyTransferAsset">Notify if transfers an asset</label>
+                </div>
+                <div class="col s12 m6">
+                    <input type="checkbox" id="notifySellOrder" class="filled-in" checked>
+                    <label for="notifySellOrder">Notify if place an asset sell order</label>
+                </div>
+                <div class="col s12 m6">
+                    <input type="checkbox" id="notifyPlaceBuy" class="filled-in" checked>
+                    <label for="notifyPlaceBuy">Notify if place an asset buy order</label>
+                </div>
+
+                <!-- Exchanges -->
+                <div class="col s12 m6">
+                    <input type="checkbox" id="notifySendBittrex" class="filled-in" checked>
+                    <label for="notifySendBittrex">Notify if wallet send to Bittrex</label>
+                </div>
+                <div class="col s12 m6">
+                    <input type="checkbox" id="notifyReceiveBittrex" class="filled-in" checked>
+                    <label for="notifyReceiveBittrex">Notify if wallet receive from Bittrex</label>
+                </div>
+                <div class="col s12 m6">
+                    <input type="checkbox" id="notifyReceivePoloniex" class="filled-in" checked>
+                    <label for="notifyReceivePoloniex">Notify if wallet receive from Poloniex</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 center-align">
+                    <a href="#" class="js-delete-wallet btn red white-text">Delete Wallet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Fixed footer -->
+<footer class="fixed-footer blue-grey darken-3 white-text">
+    <p class="js-wallet-connecting">Connecting to wallet... Please wait.</p>
+    <p class="js-wallet-details" style="display: none;">
+        Connected to: <span class="js-connected-server grey-text text-lighten-1"></span> <a href="#editServerModal" class="modal-trigger">(Change)</a>.
+        Block Height: <span class="js-block-height grey-text text-lighten-1"></span>.
+        Brought to you by <a id="nationLink" href="https://www.burstnation.com/" target="_blank">BurstNation</a>
+    </p>
+</footer>
+
+<!-- Edit server modal -->
+<div id="editServerModal" class="modal">
+    <div class="modal-content">
+        <h4>Wallet</h4>
+        <p>You are currently connected to: <span class="js-connected-server green-text text-darken-2"></span></p>
+        <p>You can change the online wallet you want to use, just type the url (including http/https and port) you want to connect to.</p>
+        <p>Note: Saving with the field empty, will use the default wallets</p>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="serverURL" type="url" class="js-server-url validate" placeholder="https://wallet1.burstnation.com:8125">
+                <label for="serverURL">Wallet URL</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="modal-action modal-close btn-flat waves-effect waves-light">Cancel</a>
+        <a href="#" class="js-save-server btn-flat waves-effect waves-light">Save</a>
+    </div>
+</div>
+
+<script>
+    // You can also require other files to run in this process
+    window.$ = window.jQuery = require('jquery');
+    window.Hammer = require('hammerjs');
+    //require('operative');
+    require('materialize-css');
+    require('./app.js');
+</script>
+</body>
+</html>
