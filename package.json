@@ -1,6 +1,6 @@
 {
   "name": "burstspygadget",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Burst App to spy on the blcokchain",
   "main": "index.js",
   "scripts": {
