@@ -114,17 +114,19 @@ class WatcherComponent {
             // Asset Exchange
             if(transaction.type === TYPES.ASSET_EXCHANGE) {
                 assetExchangeApi.getAsset(transaction.attachment.asset).then((asset: AssetInterface) => {
-                    const quantity = asset.decimals > 0? +transaction.attachment.quantityQNT / Math.pow(10, 8 - asset.decimals) : transaction.attachment.quantityQNT;
+                    const quantity: number = asset.decimals > 0? (+transaction.attachment.quantityQNT / Math.pow(10, asset.decimals)) : +transaction.attachment.quantityQNT;
+                    let amount = 0;
+                    if(transaction.attachment.priceNQT && transaction.attachment.priceNQT.length) {
+                        amount = utils.toEightDecimals(asset.decimals > 0? (+transaction.attachment.priceNQT / Math.pow(10, asset.decimals)) : +transaction.attachment.priceNQT);
+                    }
 
                     if(transaction.subtype === ASSET_SUBTYPES.ASSET_BUY && wallet.options.notifyPlaceBuy) {
-                        const amount = utils.toEightDecimals(+transaction.attachment.priceNQT / 100000000);
                         const body = `Placed BUY order for ${asset.name} of ${quantity} shares at ${amount}BURST`;
                         new Notification(wallet.name, {body });
 
                         history.update(wallet.name, `${new Date().toLocaleString()} | ${body}. Transaction = ${transaction.transaction}. Block height = ${transaction.height}`);
 
                     } else if(transaction.subtype === ASSET_SUBTYPES.ASSET_SELL && wallet.options.notifySellOrder) {
-                        const amount = utils.toEightDecimals(+transaction.attachment.priceNQT / 100000000);
                         const body = `Placed SELL order for ${asset.name} of ${quantity} shares at ${amount}BURST`;
                         new Notification(wallet.name, {body });
 
