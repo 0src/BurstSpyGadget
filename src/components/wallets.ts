@@ -28,7 +28,6 @@ class WalletsComponent {
     private selectedIndex: number = 0;
 
     private isSaving: boolean = false;
-    private unsavedChanges: boolean = false;
 
     private $sidebar;
     private $btnAddWallet;
@@ -56,7 +55,7 @@ class WalletsComponent {
         this.setWallet();
     }
 
-    getSelectedWallet() {
+    getCurrentWallet() {
         return this.selectedWallet;
     }
 
@@ -146,8 +145,6 @@ class WalletsComponent {
             if($this.hasClass('active') || $(e.target).hasClass('btn')) {
                 return;
             }
-
-            $('')
 
             this.setWallet($this.index() - 1);
         });

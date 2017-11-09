@@ -22,7 +22,6 @@ class WalletsComponent {
         this.wallets = [];
         this.selectedIndex = 0;
         this.isSaving = false;
-        this.unsavedChanges = false;
         database_1.database.get('wallets').then((wallets) => {
             this.wallets = wallets;
         }).catch(e => {
@@ -39,7 +38,7 @@ class WalletsComponent {
         this.wallets.forEach((wallet) => { this.addWalletToDom(wallet.name); });
         this.setWallet();
     }
-    getSelectedWallet() {
+    getCurrentWallet() {
         return this.selectedWallet;
     }
     getWallets() {
@@ -109,7 +108,6 @@ class WalletsComponent {
             if ($this.hasClass('active') || $(e.target).hasClass('btn')) {
                 return;
             }
-            $('');
             this.setWallet($this.index() - 1);
         });
         this.$btnDeleteWallet.on('click', e => {

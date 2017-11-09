@@ -31,6 +31,20 @@ class History {
             }
         });
     }
+
+    get(name: string) {
+        return new Promise((resolve, reject) => {
+            name = name.replace(/[^0-9a-z]/gi, '_');
+
+            fs.readFile(path.resolve('history', `${name}.txt`), 'utf8', (err, data) => {
+                if(err) {
+                    reject();
+                } else {
+                    resolve(data);
+                }
+            });
+        });
+    }
 }
 
 export const history = new History();

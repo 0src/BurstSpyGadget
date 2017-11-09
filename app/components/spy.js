@@ -5,9 +5,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 const $ = require("jquery");
 const wallets_1 = require("./wallets");
+const history_1 = require("./history");
 class SpyComponent {
     init() {
         console.log('Initializing SpyComponent...');
+        history_1.historyComponent.init();
         this.initjQuery();
         this.events();
     }

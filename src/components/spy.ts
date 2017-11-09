@@ -4,15 +4,19 @@
 import * as $ from 'jquery';
 import {WalletInterface} from "./interfaces/wallet";
 import {walletsComponent} from "./wallets";
+import {historyComponent} from "./history";
 
 class SpyComponent {
+    private currentWallet: WalletInterface;
+
     private $walletName;
     private $walletAddress;
     private $options;
-    private currentWallet: WalletInterface;
 
     init() {
         console.log('Initializing SpyComponent...');
+
+        historyComponent.init();
 
         this.initjQuery();
         this.events();
